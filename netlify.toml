@@ -1,0 +1,32 @@
+# Netlify deployment for PairoApps
+#  - Website: React app in client/, built to client/dist
+#  - Contact form API: netlify/functions/contact.mts, served at /api/contact
+
+[build]
+  command = "npm ci --prefix server && npm ci --prefix client && npm run build --prefix client"
+  publish = "client/dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  # Vite 8 needs Node 20.19+ or 22.12+
+  NODE_VERSION = "24"
+
+# Single-page app: let React Router handle every page URL (/about, /services#finance, ...)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Basic security headers (the Express server used helmet for these)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Built JS/CSS files have content hashes in their names, so they can be cached for a year
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
