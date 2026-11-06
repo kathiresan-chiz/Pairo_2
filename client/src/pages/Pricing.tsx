@@ -46,7 +46,7 @@ export default function Pricing() {
       <Hero
         title={<>One Price per Company. <span className="text-seal">Every Agent Included.</span></>}
         image="m-retail"
-        labels={['Free', 'Standard', 'Professional', 'Professional Plus', 'Enterprise']}
+        labels={['Start free', 'Every agent included', 'One price per company']}
         text="Start free. Add people, companies and control as you grow. Pay yearly and get 2 months free."
         actions={<><Pill to={navCta.to} tone="dark">Book a Demo</Pill><Pill to="/contact?intent=sales">Talk to Sales</Pill></>}
       />

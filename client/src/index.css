@@ -78,6 +78,108 @@
   @media (min-width: 48rem) { .eyebrow { font-size: 0.8125rem; } }
 }
 
+/* Parrot AI mark (see <ParrotMark />): flies in, then stands with a gentle bob while a glow pulses behind it */
+@keyframes parrot-fly {
+  0% { opacity: 0; transform: translate(-70%, 40%) rotate(-18deg) scale(.6); }
+  45% { opacity: 1; transform: translate(-12%, -22%) rotate(-6deg) scale(1.06); }
+  75% { transform: translate(3%, 4%) rotate(3deg) scale(.98); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes parrot-stand { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-1.5deg); } }
+@keyframes parrot-flap { 0%,100% { transform: none; } 50% { transform: translateY(-5px) rotate(-14deg) scaleY(1.25); } }
+@keyframes parrot-flap-idle { 0%,100% { transform: none; } 3% { transform: translateY(-4px) rotate(-12deg) scaleY(1.2); } 6% { transform: none; } 9% { transform: translateY(-4px) rotate(-12deg) scaleY(1.2); } 12% { transform: none; } }
+@keyframes parrot-glow { 0%,100% { opacity: .55; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.08); } }
+@keyframes parrot-shadow { 0%,100% { opacity: .35; transform: scaleX(1); } 50% { opacity: .2; transform: scaleX(.82); } }
+.parrot-fly { opacity: 0; }
+.parrot-mark[data-shown="true"] .parrot-fly { animation: parrot-fly 1.6s cubic-bezier(.2,.8,.2,1) both; }
+.parrot-mark[data-shown="true"] .parrot-stand { animation: parrot-stand 4s ease-in-out 1.6s infinite; }
+.parrot-wing { transform-box: fill-box; transform-origin: 20% 90%; }
+.parrot-mark[data-shown="true"] .parrot-wing { animation: parrot-flap .32s ease-in-out 4, parrot-flap-idle 6s ease-in-out 2.4s infinite; }
+.parrot-mark[data-shown="true"] .parrot-glow { animation: parrot-glow 3s ease-in-out 1s infinite; }
+.parrot-mark[data-shown="true"] .parrot-shadow { animation: parrot-shadow 4s ease-in-out 1.6s infinite; }
+
+/* Parrot AI companion (see <ParrotCompanion />) */
+@keyframes parrot-blink { 0%,93%,100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+@keyframes pc-trail { from { opacity: .9; transform: translate(-50%,-50%) scale(1); } to { opacity: 0; transform: translate(-50%,-50%) translateY(10px) scale(.2); } }
+@keyframes pc-pop { from { opacity: 0; transform: translateY(8px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes pc-dot { 0%,80%,100% { opacity: .3; transform: none; } 40% { opacity: 1; transform: translateY(-3px); } }
+@keyframes pc-caret { 50% { opacity: 0; } }
+@keyframes pc-halo { 0%,100% { opacity: .7; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes pc-ring { from { opacity: .7; transform: scale(.85); } to { opacity: 0; transform: scale(1.55); } }
+@keyframes pc-land { 0% { transform: translateY(-18px) rotate(-10deg) scale(1.12); } 55% { transform: translateY(3px) rotate(2deg) scale(.95); } 80% { transform: translateY(-2px); } 100% { transform: none; } }
+@keyframes pc-orbit { to { transform: rotate(360deg); } }
+.parrot-eye { transform-box: fill-box; transform-origin: center; animation: parrot-blink 5.5s infinite; }
+.parrot-flying .parrot-wing { animation: parrot-flap .22s ease-in-out infinite !important; }
+.pc-flyer { offset-rotate: auto; will-change: offset-distance; }
+.pc-trail { position: fixed; border-radius: 9999px; background: radial-gradient(circle, #c8e6fa 0%, #3a78c2 70%); box-shadow: 0 0 8px rgba(58,120,194,.6); animation: pc-trail .9s ease-out forwards; }
+.pc-pop { animation: pc-pop .35s cubic-bezier(.2,.8,.2,1) both; }
+.pc-dot { animation: pc-dot 1s infinite; }
+.pc-caret { margin-left: 1px; color: #3a78c2; animation: pc-caret .8s steps(1) infinite; }
+.pc-halo { animation: pc-halo 3s ease-in-out infinite; }
+.pc-ring { animation: pc-ring 2.8s ease-out infinite; }
+.pc-ring-2 { animation-delay: 1.4s; }
+.pc-land { animation: pc-land .7s cubic-bezier(.2,.8,.2,1) both; }
+.pc-dock .parrot-stand { animation: parrot-stand 3.6s ease-in-out infinite; }
+.pc-dock .parrot-wing { transform-box: fill-box; transform-origin: 20% 90%; animation: parrot-flap-idle 7s ease-in-out 1s infinite; }
+/* big Parrot AI mark: voice rings and orbiting sparkles */
+.parrot-mark[data-shown="true"] .pm-ring { animation: pc-ring 3.2s ease-out 1.4s infinite; }
+.parrot-mark[data-shown="true"] .pm-ring-2 { animation-delay: 2.47s; }
+.parrot-mark[data-shown="true"] .pm-ring-3 { animation-delay: 3.53s; }
+.pm-ring { opacity: 0; }
+.parrot-mark[data-shown="true"] .pm-orbit { animation: pc-orbit 16s linear infinite; opacity: 1; }
+.parrot-mark[data-shown="true"] .pm-orbit-2 { animation-duration: 24s; animation-direction: reverse; }
+.pm-orbit { opacity: 0; transition: opacity 1s 1.4s; }
+
+/* Home hero Parrot AI reveal (see <ParrotReveal />) */
+@keyframes pr-rise { from { opacity: 0; transform: translateY(40%) skewY(6deg); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes pr-bird-in { from { opacity: 0; transform: translateY(6%) scale(.97); } to { opacity: 1; transform: none; } }
+.pr-letter { animation: pr-rise 1s cubic-bezier(.2,.8,.2,1) both; }
+/* Parrot blink, modelled on a real one: the upper and lower lids (cut from the photo's own eye-ring
+   skin) close fast and meet at a curved lash seam, casting a soft shadow over the eye; they open more
+   slowly, then the translucent third eyelid sweeps across from the beak side and the catchlight glints. */
+@keyframes pr-lid-up {
+  0%   { transform: translateY(-101%); animation-timing-function: cubic-bezier(.55,0,.85,.4); }
+  22%  { transform: translateY(-43%); animation-timing-function: linear; }
+  31%  { transform: translateY(-43%); animation-timing-function: cubic-bezier(.2,.65,.25,1); }
+  100% { transform: translateY(-101%); } }
+@keyframes pr-lid-low {
+  0%   { transform: translateY(101%); animation-timing-function: cubic-bezier(.55,0,.85,.4); }
+  22%  { transform: translateY(53%); animation-timing-function: linear; }
+  31%  { transform: translateY(53%); animation-timing-function: cubic-bezier(.2,.65,.25,1); }
+  100% { transform: translateY(101%); } }
+@keyframes pr-shade { 0% { opacity: 0; } 22%, 31% { opacity: .9; } 70%, 100% { opacity: 0; } }
+@keyframes pr-nict { 0% { transform: translateX(105%); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateX(-105%); opacity: 0; } }
+@keyframes pr-glint { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.2) rotate(0deg); } 35% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(45deg); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(.5) rotate(80deg); } }
+.pr-lid { position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle, #000 86%, transparent 100%); mask-image: radial-gradient(circle, #000 86%, transparent 100%); }
+.pr-lid-dark { filter: brightness(.3) contrast(1.45) saturate(1.35); }
+.pr-lid-shade { position: absolute; inset: 0; opacity: 0; background: radial-gradient(120% 70% at 50% 0%, rgba(20,12,10,.55), transparent 70%); }
+.pr-lid-up, .pr-lid-low { position: absolute; inset: 0; overflow: hidden; }
+.pr-lid-up { z-index: 2; transform: translateY(-101%); border-radius: 0 0 50% 50% / 0 0 32% 32%;
+  box-shadow: 0 2px 3px rgba(30,18,14,.35); }
+.pr-lid-low { z-index: 1; transform: translateY(101%); border-radius: 50% 50% 0 0 / 26% 26% 0 0; }
+.pr-lid i { position: absolute; inset: 0; background-size: cover; background-position: center;
+  /* tone the skin to the shaded ring right around the eye (warmer, a touch darker than the outer ring) */
+  filter: brightness(.9) sepia(.1) saturate(1.15); }
+.pr-lid-up i { background-image: radial-gradient(130% 70% at 50% 0%, rgba(255,250,246,.35), transparent 60%), linear-gradient(0deg, rgba(84,58,50,.38), transparent 32%), url(/brand/parrot-lid-up.webp); }
+.pr-lid-low i { background-image: linear-gradient(180deg, rgba(84,58,50,.32), transparent 35%), radial-gradient(130% 70% at 50% 100%, rgba(255,250,246,.3), transparent 60%), url(/brand/parrot-lid-low.webp); }
+/* the lash seam on the upper lid's edge */
+.pr-lid-up::after { content: ""; position: absolute; left: 4%; right: 4%; bottom: 0; height: 30%;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%; border-bottom: 1.6px solid rgba(34,22,20,.9); filter: blur(.25px); }
+/* the third eyelid: a translucent pearly film that sweeps across from the beak side */
+.pr-nict { position: absolute; inset: -4%; z-index: 3; opacity: 0; transform: translateX(105%);
+  background: linear-gradient(100deg, transparent 8%, rgba(232,238,244,.18) 26%, rgba(244,247,250,.62) 46%, rgba(255,255,255,.78) 52%, rgba(232,238,244,.5) 60%, transparent 82%); }
+.pr-blink .pr-lid-up { animation: pr-lid-up .62s both; }
+.pr-blink .pr-lid-low { animation: pr-lid-low .62s both; }
+.pr-blink .pr-lid-shade { animation: pr-shade .62s ease-out both; }
+.pr-blink .pr-nict { animation: pr-nict .36s cubic-bezier(.45,0,.3,1) .36s both; }
+.pr-eyefx { position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; }
+.pr-glint { position: absolute; left: 34%; top: 28%; width: 46%; height: 46%; opacity: 0;
+  background: radial-gradient(circle, #fff 0 9%, rgba(255,255,255,.5) 13%, transparent 22%), linear-gradient(90deg, transparent 47%, rgba(255,255,255,.9) 50%, transparent 53%), linear-gradient(0deg, transparent 47%, rgba(255,255,255,.9) 50%, transparent 53%);
+  -webkit-mask-image: radial-gradient(circle, #000 30%, transparent 70%); mask-image: radial-gradient(circle, #000 30%, transparent 70%); filter: drop-shadow(0 0 3px rgba(220,238,255,.95)); }
+.pr-blink .pr-glint { animation: pr-glint .75s ease-out .5s both; }
+.pr-layer { animation: pr-bird-in 1.2s cubic-bezier(.2,.8,.2,1) .35s both; }
+
 /* Scroll reveal (see <Reveal />) */
 .reveal { will-change: opacity, transform; opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
 .reveal[data-shown="true"] { opacity: 1; transform: none; will-change: auto; }
@@ -85,4 +187,8 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .animate-marquee, .animate-marquee-rev, .glowC, .glowSoft, .flow { animation: none; }
+  .parrot-mark .parrot-fly, .parrot-mark .parrot-stand, .parrot-mark .parrot-glow, .parrot-mark .parrot-shadow, .parrot-mark .parrot-wing { animation: none !important; opacity: 1; }
+  .parrot-eye, .pc-halo, .pc-ring, .pc-land, .pc-pop, .pc-dock .parrot-stand, .pc-dock .parrot-wing, .pm-ring, .pm-orbit { animation: none !important; }
+  .pc-ring, .pm-ring { opacity: 0; }
+  .pr-letter, .pr-layer, .pr-lid-up, .pr-lid-low, .pr-lid-shade, .pr-nict, .pr-glint { animation: none !important; }
 }

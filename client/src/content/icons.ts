@@ -1,6 +1,7 @@
+import { ParrotGlyph } from '../components/brand/ParrotIcon'
 import {
   BarChart3, BookText, Boxes, Cable, Clock, Database, Factory, FileCheck, GraduationCap, Handshake,
-  Headset, Landmark, Link2, MessageSquare, Percent, PiggyBank, Settings2, ShieldCheck, ShoppingCart, Sparkles, TrendingUp,
+  Headset, Landmark, Link2, Percent, PiggyBank, Settings2, ShieldCheck, ShoppingCart, Sparkles, TrendingUp,
 } from 'lucide-react'
 
 /** One icon per agentic solution (keys match solutions in pairo.ts). */
@@ -16,7 +17,7 @@ export const solutionIcons = {
   reports: BarChart3,
   budgets: PiggyBank,
   control: ShieldCheck,
-  parrot: MessageSquare,
+  parrot: ParrotGlyph,
 } as const
 
 export const solutionIcon = (key: string) => solutionIcons[key as keyof typeof solutionIcons]

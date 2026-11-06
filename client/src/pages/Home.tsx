@@ -1,4 +1,6 @@
 import Seo from '../components/Seo'
+import ParrotReveal from '../components/brand/ParrotReveal'
+import ParrotMark from '../components/brand/ParrotMark'
 import { Brand, Pill } from '../components/ui'
 import Hero from '../components/sections/Hero'
 import Approach from '../components/sections/Approach'
@@ -31,10 +33,11 @@ export default function Home() {
       <Hero
         full
         image="m-ai-erp-hero"
-        title={<>Your Agentic Accountant <span className="text-seal">Closes the Books.</span></>}
         labels={['The agentic ERP for India', '24×7 · fully automated', 'Built by accountants']}
         text="Fully automated. An accountant working round the clock for you: it matches every bank line, reads every bill, gets GST returns ready, chases every payment and audits every entry."
         actions={<><Pill to={navCta.to} tone="dark">Book a Demo</Pill><Pill to="/parrot-ai">See Parrot AI work</Pill></>}
+        visual={<ParrotReveal />}
+        title={<>Your Agentic Accountant <span className="text-seal">Closes the Books.</span></>}
       />
 
       {/* 02 One agent, two roles */}
@@ -81,6 +84,7 @@ export default function Home() {
         intro="Your AI accounting assistant. Type or speak in English, Tamil or Hindi, confirm in one tap. Nothing goes to an outside AI."
         cta={{ label: 'Everything Parrot AI can do', to: '/parrot-ai' }}
         items={parrotStories}
+        visual={<ParrotMark />}
         itemCta={{ label: 'See it in a demo', to: navCta.to }}
       />
 

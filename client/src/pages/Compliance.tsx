@@ -16,7 +16,7 @@ export default function Compliance() {
       <Hero
         title={<>The Law, <span className="text-seal">Built In</span>.</>}
         image="m-office"
-        labels={['GST', 'TDS · TCS', 'Schedule III', 'MSME']}
+        labels={['GST · TDS · TCS', 'Companies Act · Schedule III', 'MSME · s.43B(h)']}
         text="GST, TDS under the Income-tax Act 2025, Companies Act and MSME — checked as you post, ready before every due date."
         actions={<Pill to={navCta.to} tone="dark">Book a Demo</Pill>}
       />

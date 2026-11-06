@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 120" fill="none">
+  <title>Parrot AI</title>
+  <defs>
+    <linearGradient id="sail" x1="40" y1="4" x2="100" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e4a87"/><stop offset=".55" stop-color="#3a78c2"/><stop offset="1" stop-color="#c8e6fa"/>
+    </linearGradient>
+    <linearGradient id="body" x1="28" y1="100" x2="150" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c8e6fa"/><stop offset=".45" stop-color="#3a78c2"/><stop offset="1" stop-color="#1e4a87"/>
+    </linearGradient>
+    <linearGradient id="tail" x1="1" y1="111" x2="80" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a78c2" stop-opacity="0"/><stop offset="1" stop-color="#3a78c2"/>
+    </linearGradient>
+  </defs>
+  <path d="M62 4C42 17 35 46 45 69H101C84 54 70 32 62 4Z" fill="url(#sail)"/>
+  <path d="M28 99C58 84 94 69 121 69C137 69 147 77 150 86C141 84 133 88 127 94C110 104 80 103 28 99Z" fill="url(#body)"/>
+  <path d="M70 89C88 80 104 76 118 77C108 81 96 88 86 95C80 94 75 92 70 89Z" fill="#c8e6fa" opacity=".75"/>
+  <path d="M1 111L80 89L76 96Z" fill="url(#tail)"/>
+  <path d="M133 78a2.6 2.6 0 1 0 0.1 0Z" fill="#edf3fe"/>
+</svg>

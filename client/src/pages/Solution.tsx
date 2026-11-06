@@ -9,6 +9,7 @@ import CardRail from '../components/sections/CardRail'
 import QuoteCarousel from '../components/sections/QuoteCarousel'
 import LetsTalk from '../components/sections/LetsTalk'
 import NotFound from './NotFound'
+import ParrotMark from '../components/brand/ParrotMark'
 import { solutionIcon } from '../content/icons'
 import { navCta } from '../content/site'
 import { solutions } from '../content/pairo'
@@ -66,6 +67,7 @@ export default function Solution() {
           body: st.d,
           rows: [['On screen', st.title], ...st.lines.map((l, i) => [lineLabels[i] ?? `Line ${i + 1}`, l])] as [string, string][],
         }))}
+        visual={s.key === 'parrot' ? <ParrotMark /> : undefined}
         itemCta={{ label: 'See it in a demo', to: navCta.to }}
       />
 
@@ -87,7 +89,7 @@ export default function Solution() {
         items={s.vs.tasks.map(([today, min, agent, mode], i) => ({
           text: `Today: ${today}, ${min} min. With the agent: ${agent}${mode === 'approve' ? ', waiting for your one tap.' : ', done automatically.'}`,
           name: `Task 0${i + 1} of 0${s.vs.tasks.length}`,
-          role: `You vs your ${s.live.toLowerCase()}`,
+          role: `You vs your ${s.live}`,
         }))}
       />
 
