@@ -1,7 +1,6 @@
 /**
  * PairoApps website content, from "Website Strategy & Content Architecture v1.0".
- * Anything with confirmed: false is a planning suggestion from that doc and
- * must be validated by the PairoApps team before launch.
+ * Product content (agents, Parrot AI, Health Check, compliance, packs) lives in ./pairo.ts.
  */
 
 export const SITE_URL = 'https://www.pairoapps.com' // TODO: confirm production domain
@@ -9,8 +8,11 @@ export const SITE_URL = 'https://www.pairoapps.com' // TODO: confirm production 
 export const nav = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
-  { label: 'Services', to: '/services' },
-  // { label: 'Pricing', to: '/pricing' }, // Pricing page switched off for now
+  { label: 'Agentic Solutions', to: '/services' },
+  { label: 'Parrot AI', to: '/parrot-ai' },
+  { label: 'Health Check', to: '/health-check' },
+  { label: 'Compliance', to: '/compliance' },
+  { label: 'Pricing', to: '/pricing' },
   { label: 'Insights', to: '/insights' },
   { label: 'Contact', to: '/contact' },
 ] as const
@@ -18,49 +20,16 @@ export const nav = [
 export const navCta = { label: 'Book a Demo', to: '/contact?intent=demo' }
 
 export const seo = {
-  home: { title: 'PairoApps | AI-Powered ERP Software for Smarter Business Management', description: 'PairoApps brings finance, operations, people and processes into one connected, AI-powered ERP platform.', path: '/' },
+  home: { title: 'PairoApps | The Agentic ERP for India', description: 'Your agentic accountant closes the books: 24×7, fully automated, with an auditor built in. Built by accountants, for business owners and accountants.', path: '/' },
   about: { title: 'About PairoApps | Our Vision, Mission & ERP Technology', description: 'Why PairoApps exists, the principles behind what we build, and how we approach business technology.', path: '/about' },
-  services: { title: 'ERP Software & Business Automation Solutions | PairoApps', description: 'A connected ERP ecosystem for every business function, with intelligent automation, implementation and support.', path: '/services' },
-  pricing: { title: 'PairoApps ERP Pricing | Flexible Business Software Plans', description: 'ERP pricing shaped around your users, modules, integrations and support needs.', path: '/pricing' },
+  services: { title: 'Agentic Solutions | PairoApps', description: 'An agent in every module: twelve agents do the routine, all posting into one ledger. You approve what matters.', path: '/services' },
+  parrot: { title: 'Parrot AI | Your AI Accounting Assistant | PairoApps', description: 'Type, speak or send a photo in English, Tamil or Hindi. Parrot AI drafts the entry; nothing posts until you confirm.', path: '/parrot-ai' },
+  health: { title: 'Real-time Health Check | PairoApps', description: '70 checks across 12 areas on your live books, run any time, in seconds. Add your own rules.', path: '/health-check' },
+  compliance: { title: 'GST, TDS, Companies Act & MSME Compliance | PairoApps', description: 'GST, TDS under the Income-tax Act 2025, Companies Act and MSME, checked as you post and ready before every due date.', path: '/compliance' },
+  pricing: { title: 'Packs and Pricing | PairoApps', description: 'One price per company. Every agent included. Start free; add people, companies and control as you grow.', path: '/pricing' },
   insights: { title: 'Business & ERP Insights | PairoApps', description: 'Ideas on ERP, AI, automation, finance and operations for a smarter way to do business.', path: '/insights' },
   contact: { title: 'Contact PairoApps | Talk to Our ERP Software Team', description: 'Book a demo or talk to the PairoApps team about connecting your business.', path: '/contact' },
 } as const
-
-export const modules = [
-  { key: 'finance', name: 'Finance & Accounting', blurb: 'Ledgers, receivables, payables and reporting in one place.' },
-  { key: 'sales', name: 'Sales & CRM', blurb: 'From lead to invoice without re-keying data.' },
-  { key: 'purchase', name: 'Purchase Management', blurb: 'Requisitions, approvals and supplier orders, connected.' },
-  { key: 'inventory', name: 'Inventory Management', blurb: 'Live stock levels across every location.' },
-  { key: 'hr', name: 'HR Management', blurb: 'People, payroll and attendance alongside the rest of the business.' },
-  { key: 'tax', name: 'Tax & Compliance', blurb: 'Tax-ready records as part of everyday transactions.' },
-  { key: 'projects', name: 'Projects & Budgets', blurb: 'Track spend against plan, project by project.' },
-  { key: 'analytics', name: 'Analytics & Reports', blurb: 'Clear reporting across every connected module.' },
-].map((m) => ({ ...m, confirmed: false }))
-
-export const aiCapabilities = [
-  { name: 'AI-powered assistance', blurb: 'Ask questions of your business data in plain language.' },
-  { name: 'Intelligent document processing', blurb: 'Turn invoices and receipts into structured entries.' },
-  { name: 'Workflow automation', blurb: 'Let routine, supported steps run on their own.' },
-  { name: 'Predictive insights', blurb: 'Spot trends in cash, stock and demand earlier.' },
-  { name: 'Automated reporting', blurb: 'Reports that build themselves on schedule.' },
-].map((c) => ({ ...c, confirmed: false }))
-
-export const howItWorks = [
-  'Connect business operations.',
-  'Centralise business information.',
-  'Automate supported workflows.',
-  'Access meaningful insights.',
-  'Make informed decisions.',
-]
-
-export const differentiators = [
-  'Connected business management',
-  'Intelligent automation',
-  'Centralised information',
-  'Operational visibility',
-  'Flexible and scalable architecture',
-  'User-friendly experience',
-]
 
 export const principles = [
   { name: 'Connection', meaning: 'Bring business functions together.' },
@@ -69,24 +38,6 @@ export const principles = [
 ]
 
 export const services = ['ERP Implementation', 'System Configuration', 'Data Migration', 'Third-party Integrations', 'User Training', 'Technical Support']
-
-export const plans = [
-  { name: 'Essential', audience: 'Small businesses', featured: false },
-  { name: 'Professional', audience: 'Growing businesses', featured: true },
-  { name: 'Enterprise', audience: 'Large or complex organisations', featured: false },
-].map((p) => ({ ...p, confirmed: false }))
-
-export const pricingFactors = ['Number of users', 'Selected ERP modules', 'Implementation requirements', 'Integrations', 'Support requirements']
-
-const TBC = 'To be confirmed by the PairoApps team.'
-export const pricingFaq = [
-  { q: 'How is ERP pricing calculated?', a: 'Pricing depends on users, selected modules, implementation, integrations and support. Our team will scope it with you.' },
-  { q: 'Can I choose individual modules?', a: TBC },
-  { q: 'Is implementation included?', a: TBC },
-  { q: 'Can I upgrade my plan?', a: TBC },
-  { q: 'Does PairoApps support integrations?', a: TBC },
-  { q: 'Is product training available?', a: TBC },
-]
 
 export const insightCategories = [
   { slug: 'erp-enterprise-technology', name: 'ERP & Enterprise Technology' },
@@ -118,37 +69,28 @@ export const articles: Article[] = [
 const visuals = ['m-warehouse', 'm-factory', 'm-retail', 'm-team', 'm-office', 'm-city-bridge', 'm-port', 'm-ai'] as const
 export const articleVisual = (a: Article) => visuals[articles.indexOf(a) % visuals.length]
 
-/** AI capabilities as "story" cards (reference success-stories carousel). */
-export const aiStories = [
-  { title: 'AI-powered assistance', body: 'Ask questions of your business data in plain language and get answers drawn from every connected module.', rows: [['Works across', 'All connected modules'], ['Helps with', 'Everyday questions and lookups'], ['Benefit', 'Answers without building a report']] as [string, string][], visual: 'bg-pairo-blue' },
-  { title: 'Intelligent document processing', body: 'Turn invoices, receipts and purchase documents into structured entries, ready to review.', rows: [['Works across', 'Finance, Purchase'], ['Helps with', 'Data entry from documents'], ['Benefit', 'Less re-keying, fewer errors']] as [string, string][], visual: 'bg-pairo-icon' },
-  { title: 'Workflow automation', body: 'Let routine, supported steps such as approvals, reminders and postings run on their own.', rows: [['Works across', 'Sales, Purchase, HR'], ['Helps with', 'Repetitive process steps'], ['Benefit', 'Teams focus on exceptions']] as [string, string][], visual: 'bg-pairo-screen' },
-  { title: 'Predictive insights', body: 'Spot trends in cash, stock and demand earlier, so decisions are made before problems arrive.', rows: [['Works across', 'Finance, Inventory, Sales'], ['Helps with', 'Planning and forecasting'], ['Benefit', 'Earlier, better-informed decisions']] as [string, string][], visual: 'bg-pairo-night' },
-  { title: 'Automated reporting', body: 'Reports that build themselves on schedule and land with the people who need them.', rows: [['Works across', 'Analytics & Reports'], ['Helps with', 'Recurring management reports'], ['Benefit', 'Always-current numbers']] as [string, string][], visual: 'bg-pairo-light' },
-]
-
 /** "Why PairoApps" statements, shown in the reference testimonial layout. Not customer quotes. */
 export const whyStatements = [
-  { text: 'Connected business management. Finance, stock, sales and people share one source of truth, so every team works from the same numbers.', name: 'Connected', role: 'Why PairoApps · 01' },
-  { text: 'Intelligent automation. Routine, supported steps run on their own, so your people spend their time on the work that needs them.', name: 'Intelligent', role: 'Why PairoApps · 02' },
-  { text: 'Centralised information. No more chasing spreadsheets across inboxes. What you need is where you expect it.', name: 'Centralised', role: 'Why PairoApps · 03' },
-  { text: 'Operational visibility. See what is happening across the business as it happens, not at month-end.', name: 'Visible', role: 'Why PairoApps · 04' },
-  { text: 'Flexible and scalable architecture. Start with the modules you need and add more as the business grows.', name: 'Scalable', role: 'Why PairoApps · 05' },
-  { text: 'A user-friendly experience. Calm, clear screens that people actually want to use every day.', name: 'Human', role: 'Why PairoApps · 06' },
+  { text: 'Your accountant and your auditor are the same agent. It does the work, and checks it as you post.', name: 'Checked as you post', role: 'Why PairoApps · 01' },
+  { text: 'Run a full audit any time: 70 checks across 12 areas on your live books, in seconds.', name: 'Full audit any time', role: 'Why PairoApps · 02' },
+  { text: 'The audit trail is always on, as the Companies Act requires. Every change is logged with who, when and why.', name: 'Audit trail always on', role: 'Why PairoApps · 03' },
+  { text: 'No year-end surprises. GSTR-1, GSTR-3B and the books are kept tied as you go.', name: 'No year-end surprises', role: 'Why PairoApps · 04' },
+  { text: 'Nothing posts without you. Agents draft, check and route; one tap from you makes it final.', name: 'Nothing posts without you', role: 'Why PairoApps · 05' },
+  { text: "Your data never goes to an outside AI. Parrot AI runs on PairoApps' own model.", name: 'No outside AI', role: 'Why PairoApps · 06' },
 ]
 
-/** Ticker rows (reference awards marquee), using the brand vocabulary. */
+/** Ticker rows (reference awards marquee): the agentic accountant, in numbers. */
 export const vocabularyA = [
-  { title: 'Connected Operations', sub: 'Every function, one system' },
-  { title: 'Intelligent Automation', sub: 'Routine work, handled' },
-  { title: 'Business Clarity', sub: 'One version of the numbers' },
-  { title: 'Actionable Insights', sub: 'From data to decisions' },
+  { title: '58 bank lines matched', sub: 'Banking agent · 08:02' },
+  { title: '₹2.3 L collected today', sub: 'Collection agent' },
+  { title: '70/70 checks clear', sub: 'Audit agent' },
+  { title: 'Day 0 month close', sub: 'Close agent' },
 ]
 export const vocabularyB = [
-  { title: 'Unified Ecosystem', sub: 'Finance · Stock · People · Growth' },
-  { title: 'Operational Efficiency', sub: 'Less friction, more flow' },
-  { title: 'Smarter Decisions', sub: 'Built-in intelligence' },
-  { title: 'Scalable Technology', sub: 'Grows with your business' },
+  { title: '3 days', sub: 'Migration' },
+  { title: '2 weeks', sub: 'To go live' },
+  { title: '24×7', sub: 'Working round the clock' },
+  { title: '12 agents', sub: 'One ledger' },
 ]
 
 export const industries = ['Manufacturing', 'Retail & Distribution', 'Professional Services', 'Healthcare', 'Construction', 'Other']

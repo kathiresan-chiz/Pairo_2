@@ -1,18 +1,28 @@
 import {
-  BarChart3, Boxes, Cable, Database, FileCheck, FolderKanban, GraduationCap, Handshake,
-  Headset, Landmark, Link2, Settings2, ShoppingCart, Sparkles, TrendingUp, Users,
+  BarChart3, BookText, Boxes, Cable, Clock, Database, Factory, FileCheck, GraduationCap, Handshake,
+  Headset, Landmark, Link2, MessageSquare, Percent, PiggyBank, Settings2, ShieldCheck, ShoppingCart, Sparkles, TrendingUp,
 } from 'lucide-react'
 
-export const moduleIcons = {
-  finance: Landmark,
+/** One icon per agentic solution (keys match solutions in pairo.ts). */
+export const solutionIcons = {
   sales: Handshake,
-  purchase: ShoppingCart,
+  purchases: ShoppingCart,
+  accounting: BookText,
+  banking: Landmark,
   inventory: Boxes,
-  hr: Users,
-  tax: FileCheck,
-  projects: FolderKanban,
-  analytics: BarChart3,
+  manufacturing: Factory,
+  gst: FileCheck,
+  tds: Percent,
+  reports: BarChart3,
+  budgets: PiggyBank,
+  control: ShieldCheck,
+  parrot: MessageSquare,
 } as const
+
+export const solutionIcon = (key: string) => solutionIcons[key as keyof typeof solutionIcons]
+
+/** GST, TDS · TCS, Books & audit, MSME */
+export const lawIcons = [FileCheck, Percent, BookText, Clock]
 
 export const serviceIcons = [Settings2, Cable, Database, Link2, GraduationCap, Headset]
 export const principleIcons = [Link2, Sparkles, TrendingUp]

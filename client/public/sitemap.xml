@@ -3,7 +3,22 @@
   <url><loc>https://www.pairoapps.com/</loc></url>
   <url><loc>https://www.pairoapps.com/about</loc></url>
   <url><loc>https://www.pairoapps.com/services</loc></url>
-  <!-- <url><loc>https://www.pairoapps.com/pricing</loc></url> Pricing page switched off for now -->
+  <url><loc>https://www.pairoapps.com/services/sales</loc></url>
+  <url><loc>https://www.pairoapps.com/services/purchases</loc></url>
+  <url><loc>https://www.pairoapps.com/services/accounting</loc></url>
+  <url><loc>https://www.pairoapps.com/services/banking</loc></url>
+  <url><loc>https://www.pairoapps.com/services/inventory</loc></url>
+  <url><loc>https://www.pairoapps.com/services/manufacturing</loc></url>
+  <url><loc>https://www.pairoapps.com/services/gst</loc></url>
+  <url><loc>https://www.pairoapps.com/services/tds</loc></url>
+  <url><loc>https://www.pairoapps.com/services/reports</loc></url>
+  <url><loc>https://www.pairoapps.com/services/budgets</loc></url>
+  <url><loc>https://www.pairoapps.com/services/control</loc></url>
+  <url><loc>https://www.pairoapps.com/services/parrot</loc></url>
+  <url><loc>https://www.pairoapps.com/parrot-ai</loc></url>
+  <url><loc>https://www.pairoapps.com/health-check</loc></url>
+  <url><loc>https://www.pairoapps.com/compliance</loc></url>
+  <url><loc>https://www.pairoapps.com/pricing</loc></url>
   <url><loc>https://www.pairoapps.com/insights</loc></url>
   <url><loc>https://www.pairoapps.com/contact</loc></url>
 </urlset>

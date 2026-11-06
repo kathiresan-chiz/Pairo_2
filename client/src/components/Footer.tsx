@@ -6,17 +6,17 @@ const columns = [
   {
     title: 'Product',
     links: [
-      { label: 'Finance & Accounting', to: '/services#finance' },
-      { label: 'Inventory', to: '/services#inventory' },
-      { label: 'Sales & CRM', to: '/services#sales' },
-      { label: 'Analytics', to: '/services#analytics' },
+      { label: 'Agentic Solutions', to: '/services' },
+      { label: 'Parrot AI', to: '/parrot-ai' },
+      { label: 'Health Check', to: '/health-check' },
+      { label: 'Compliance', to: '/compliance' },
     ],
   },
   {
     title: 'Company',
     links: [
       { label: 'About Us', to: '/about' },
-      // { label: 'Pricing', to: '/pricing' }, // Pricing page switched off for now
+      { label: 'Pricing', to: '/pricing' },
       { label: 'Book a Demo', to: '/contact?intent=demo' },
       { label: 'Contact', to: '/contact' },
     ],
@@ -43,7 +43,7 @@ export default function Footer() {
         <div>
           <Link to="/" aria-label="PairoApps home" className="inline-block"><Wordmark tone="navy" height={34} /></Link>
           <p className="mt-5 max-w-[19rem] text-[13px] md:text-[15px] leading-[1.55] text-navy-800/90">
-            PAIRO brings finance, inventory, procurement and people into one calm, connected system.
+            The agentic ERP for India. An accountant and an auditor working round the clock, built by accountants.
           </p>
           <p className="mt-5 text-[13px] md:text-[15px] text-navy-800/90">© {new Date().getFullYear()} <Brand /></p>
         </div>

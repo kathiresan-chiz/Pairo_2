@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { Wordmark } from './brand/Logo'
 import { Arrow, Container } from './ui'
-import { insightCategories, modules, navCta } from '../content/site'
+import { insightCategories, navCta } from '../content/site'
+import { solutions } from '../content/pairo'
 
 type Item = { label: string; to: string; children?: { label: string; to: string }[] }
 
 const centre: Item[] = [
   { label: 'Home', to: '/' },
-  { label: 'Services', to: '/services', children: modules.map((m) => ({ label: m.name, to: `/services#${m.key}` })) },
+  { label: 'Solutions', to: '/services', children: [{ label: 'All agentic solutions', to: '/services' }, ...solutions.map((s) => ({ label: s.name, to: `/services/${s.key}` }))] },
+  { label: 'Platform', to: '/parrot-ai', children: [{ label: 'Parrot AI', to: '/parrot-ai' }, { label: 'Health Check', to: '/health-check' }, { label: 'Compliance', to: '/compliance' }] },
+  { label: 'Pricing', to: '/pricing' },
   { label: 'About', to: '/about' },
-  // { label: 'Pricing', to: '/pricing' }, // Pricing page switched off for now
   { label: 'Insights', to: '/insights', children: insightCategories.map((c) => ({ label: c.name, to: `/insights/${c.slug}` })) },
 ]
 
@@ -39,13 +41,13 @@ export default function Header() {
     io.observe(footer)
     return () => io.disconnect()
   }, [])
-  const [subOpen, setSubOpen] = useState(false)
+  const [subOpen, setSubOpen] = useState<string | null>(null)
   useEffect(() => {
     setOpen(false)
   }, [pathname])
-  // collapse the Services dropdown whenever the mobile menu closes
+  // collapse any open sub-menu whenever the mobile menu closes
   useEffect(() => {
-    if (!open) setSubOpen(false)
+    if (!open) setSubOpen(null)
   }, [open])
 
   return (
@@ -62,7 +64,7 @@ export default function Header() {
               {item.children && (
                 <div className="invisible absolute left-1/2 top-full w-64 -translate-x-1/2 translate-y-1 rounded-2xl border border-navy-800/10 bg-paper p-2 text-navy-900 opacity-0 shadow-[0_20px_40px_-20px_rgba(15,42,77,0.35)] transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                   {item.children.map((c) => (
-                    <Link key={c.to} to={c.to} className="block rounded-xl px-3 py-2 text-[13px] md:text-[15px] hover:bg-navy-900/5">{c.label}</Link>
+                    <Link key={c.label} to={c.to} className="block rounded-xl px-3 py-2 text-[13px] md:text-[15px] hover:bg-navy-900/5">{c.label}</Link>
                   ))}
                 </div>
               )}
@@ -86,25 +88,25 @@ export default function Header() {
         <div data-lenis-prevent className="max-h-[calc(100dvh-4rem)] overflow-y-auto lg:hidden">
         <Container className="flex flex-col gap-1 pb-8">
           {[...centre, { label: 'Contact', to: '/contact' }].map((i) =>
-            i.label === 'Services' && i.children ? (
-              // Services: label opens the page, chevron reveals the module dropdown
+            i.children ? (
+              // label opens the page, chevron reveals the sub-menu
               <div key={i.to} className="border-b border-navy-800/10">
                 <div className="flex items-center justify-between">
                   <Link to={i.to} onClick={() => setOpen(false)} className="flex-1 py-4 text-2xl tracking-tight">{i.label}</Link>
                   <button
                     className="grid h-11 w-11 place-items-center"
-                    aria-label={`${subOpen ? 'Hide' : 'Show'} ${i.label} menu`}
-                    aria-expanded={subOpen}
-                    onClick={() => setSubOpen(!subOpen)}
+                    aria-label={`${subOpen === i.label ? 'Hide' : 'Show'} ${i.label} menu`}
+                    aria-expanded={subOpen === i.label}
+                    onClick={() => setSubOpen(subOpen === i.label ? null : i.label)}
                   >
-                    <span className={`transition-transform duration-300 ${subOpen ? 'rotate-180' : ''}`}><Chevron /></span>
+                    <span className={`transition-transform duration-300 ${subOpen === i.label ? 'rotate-180' : ''}`}><Chevron /></span>
                   </button>
                 </div>
-                <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${subOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${subOpen === i.label ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                   <ul className="overflow-hidden">
                     {i.children.map((c) => (
-                      <li key={c.to}>
-                        <Link to={c.to} onClick={() => setOpen(false)} tabIndex={subOpen ? 0 : -1} className="flex items-center justify-between border-t border-navy-800/10 py-3 pl-4 text-[15px] text-navy-800/85 hover:text-navy-900">
+                      <li key={c.label}>
+                        <Link to={c.to} onClick={() => setOpen(false)} tabIndex={subOpen === i.label ? 0 : -1} className="flex items-center justify-between border-t border-navy-800/10 py-3 pl-4 text-[15px] text-navy-800/85 hover:text-navy-900">
                           {c.label}<Arrow className="h-2.5 w-2.5 opacity-60" />
                         </Link>
                       </li>
